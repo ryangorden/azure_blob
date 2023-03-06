@@ -1,0 +1,16 @@
+---
+- name: upload a file
+  hosts: localhost
+  gather_facts: false
+  vars:
+    connection_string: <connection string>
+    container_name: <container name>
+    file_name: <file name>
+    file_path: <absolute path>
+  tasks:
+    - name: Add file to Azure Blob Storage
+      azure_blob:
+        connection_string: "{{ connection_string }}"
+        container_name: "{{ container_name }}"
+        blob_name: "{{ file_name }}"
+        src: "{{ file_path }}"
